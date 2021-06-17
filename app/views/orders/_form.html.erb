@@ -1,0 +1,35 @@
+
+<%= nested_form_for(@order, remote: true) do |form| %>
+  <div id="order-form-errors"></div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Weight</label>
+      <%= form.text_field :weight, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Service Type</label>
+      <%= form.select :service_type, options_for_select([['Regular', 'Regular'], ['Speed Post', 'Speed Post']]), {}, {class: "form-control"} %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Cost</label>
+      <%= form.text_field :cost, class: "form-control", type: 'number' %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Payment Mode</label>
+      <%= form.select :payment_mode, options_for_select([['COD', 'COD'], ['Prepaid', 'Prepaid']]), {}, {class: "form-control"} %>
+    </div>
+  </div>
+  <% if @order.persisted? %>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Status</label>
+        <%= form.select :status, options_for_select([['',''], ['Sent', 'Sent'], ['In Transit', 'In Transit'], ['Delivered', 'Delivered']]), {}, {class: "form-control"} %>
+      </div>
+    </div>
+  <% end %>
+  <%= render "sender", form: form %>
+  <%= render "recipient", form: form %>
+  <%= form.submit "#{@order.persisted? ? 'Update Order' : 'Create Order'}", :class => "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,26 @@
+<%= form.fields_for(:recipient, @recipient) do |s| %>
+  <br/><br/>
+  <h5>Recipient Details</h5>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Full Name</label>
+      <%= s.text_field :full_name, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Email</label>
+      <%= s.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Address</label>
+      <%= s.text_field :address, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Mobile</label>
+      <%= s.text_field :mobile, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Pincode</label>
+      <%= s.text_field :pincode, class: "form-control" %>
+    </div>
+  </div>
+<% end %>
