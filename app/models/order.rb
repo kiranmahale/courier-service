@@ -6,7 +6,7 @@ class Order < ApplicationRecord
 
 	validates :weight, :service_type, :cost, :payment_mode, :parcel_number, presence: :true
 	validates_presence_of :sender_id, message: 'Sender should present'
-	validates_presence_of :recipient_id, message: 'Receiver should present'  
+	validates_presence_of :recipient_id, message: 'Receiver should present'
 
 
 	def create_parcel_number
